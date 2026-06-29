@@ -71,6 +71,22 @@ WiX can be a bit finicky. To get started:
 * Install [HeatWave](https://marketplace.visualstudio.com/items?itemName=FireGiant.FireGiantHeatWaveDev17). This provides support for WiX v4, although you can really use any tool that supports WiX v4 (other than the WiX toolset extension, as that only provides support for v3)
 * Build the `Installer` project, which should build `App` before-hand
 
+## Building releases (installer + portable)
+The repo includes a helper script at `tools/build.bat` that produces both the MSI installer and a portable `.zip` in `tools/output/`.
+
+Prerequisites:
+* .NET 8 SDK on `PATH` (`dotnet --version` should work)
+* WiX v6 SDK is restored automatically via the `Installer.wixproj` reference
+
+The script resolves its own paths so it can be ran pretty much anywhere, but you can run it from the repo root like so:
+```
+tools\build.bat
+```
+
+The version is read from `App/version.txt`. After a successful run you'll find:
+* `tools/output/DAWPresence-<version>-installer.msi` - the WiX MSI installer
+* `tools/output/DAWPresence-v<version>-portable.zip` - the portable build
+
 ## Adding a new DAW
 If you want to add a new DAW or want a maintainer to, you can do so by following the steps below:
 
