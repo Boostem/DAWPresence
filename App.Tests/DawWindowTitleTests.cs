@@ -98,9 +98,28 @@ public class DawWindowTitleTests
     public void Acid10_ParseProjectName(string title, string expected) =>
         new Acid10().ParseProjectName(title).ShouldBe(expected);
 
-    [TestCase("MyProject - Bitwig Studio - ", "MyProject - ")]
+    [TestCase("MyProject - Bitwig Studio - ", "MyProject")]
+    [TestCase("MyProject - Bitwig Studio", "MyProject")]
+    [TestCase("My Project With Spaces - Bitwig Studio", "My Project With Spaces")]
+    [TestCase("MyProject - Bitwig Studio 6.0", "MyProject")]
+    [TestCase("MyProject - Bitwig Studio 6.0.1", "MyProject")]
+    [TestCase("MyProject - Bitwig Studio 6.1", "MyProject")]
+    [TestCase("Track - One - Bitwig Studio", "Track - One")]
+    [TestCase("Bitwig Studio", "")]
+    [TestCase("", "")]
     public void BitwigStudio_ParseProjectName(string title, string expected) =>
         new BitwigStudio().ParseProjectName(title).ShouldBe(expected);
+
+    [TestCase("Bitwig Studio - New", "New")]
+    [TestCase("Bitwig Studio - MyProject", "MyProject")]
+    [TestCase("Bitwig Studio - My Project With Spaces", "My Project With Spaces")]
+    [TestCase("Bitwig Studio - Track - One", "Track - One")]
+    [TestCase("Bitwig Studio 6.0 - MyProject", "MyProject")]
+    [TestCase("Bitwig Studio 6.1.2 - MyProject", "MyProject")]
+    [TestCase("Bitwig Studio", "")]
+    [TestCase("", "")]
+    public void BitwigStudioApp_ParseProjectName(string title, string expected) =>
+        new BitwigStudioApp().ParseProjectName(title).ShouldBe(expected);
 
     [TestCase("Cakewalk Sonar -  - MyProject - Cakewalk Sonar - ", "Cakewalk Sonar -  - MyProject - ")]
     public void CakewalkSonar_ParseProjectName(string title, string expected) =>
