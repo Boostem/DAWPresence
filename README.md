@@ -46,7 +46,7 @@
 
 ## Currently DAWPresence supports:
 
-- Ableton Live (9-12, Intro, Lite, Standard and Suite)
+- Ableton Live (9-12, Intro, Lite, Standard and Suite, plus the Live 12 Beta)
 - FL Studio (including mobile)
 - Acid 10
 - Bitwig Studio
